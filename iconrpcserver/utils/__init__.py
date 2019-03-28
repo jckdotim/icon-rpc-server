@@ -13,7 +13,16 @@
 # limitations under the License.
 
 
-def to_low_camel_case(snake_str: str) -> str:
-    str_array = snake_str.split('_')
-    tmp_str = str_array[0].swapcase() + ''.join(sub.title() for sub in str_array[1:])
-    return tmp_str
+def upper_snake_to_lower_camel(upper_snake: str) -> str:
+    str_array = upper_snake.split('_')
+    return str_array[0].swapcase() + ''.join(sub.title() for sub in str_array[1:])
+
+
+def upper_camel_to_lower_camel(upper_camel: str) -> str:
+    return upper_camel[0].lower() + upper_camel[1:]
+
+
+def convert_method_to_lower_camel(method_name: str) -> str:
+    prefix = method_name.split('_')[0]
+    method = upper_camel_to_lower_camel(method_name.split('_')[1])
+    return prefix + '_' + method

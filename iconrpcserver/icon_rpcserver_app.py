@@ -93,8 +93,8 @@ def main():
     if redirect_protocol:
         conf.update_conf({ConfigKey.REDIRECT_PROTOCOL: redirect_protocol})
     else:
-        from iconrpcserver.utils import to_low_camel_case
-        low_camel_case_key = to_low_camel_case(ConfigKey.REDIRECT_PROTOCOL)
+        from iconrpcserver.utils import upper_snake_to_lower_camel
+        low_camel_case_key = upper_snake_to_lower_camel(ConfigKey.REDIRECT_PROTOCOL)
         redirect_protocol = conf.get(low_camel_case_key)
         if redirect_protocol is not None:
             conf.update_conf({ConfigKey.REDIRECT_PROTOCOL: redirect_protocol})
